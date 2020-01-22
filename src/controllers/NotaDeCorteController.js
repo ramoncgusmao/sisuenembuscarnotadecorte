@@ -8,7 +8,7 @@ module.exports = {
         const codigoCursoArray = codigocurso.split(',').map(texto => texto.trim());
         let lista = new Array();
 
-        const promises = codigoCursoArray.forEach( async codigo => {
+        codigoCursoArray.forEach( async codigo => {
 
         const requisicao = await axios.get(`https://sisu-api.apps.mec.gov.br/api/v1/oferta/${codigo}/modalidades`);
     
@@ -27,8 +27,6 @@ module.exports = {
         lista.push(notadecorte);
        
     }); 
-    
-    await Promise.all(promises);
     
         return response.json(lista);
     } 
